@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  ## config/routes.rb
+
+  devise_for :users, :skip => :registrations
+  devise_for :gamers, :developers
+  
+  # routes for all users
+  authenticated :user do
+  end
+
+  # routes only for users
+  authenticated :user, lambda {|u| u.type == "Gamer"} do
+  end
+
+  # routes only for companies
+  authenticated :user, lambda {|u| u.type == "Developer"} do
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
