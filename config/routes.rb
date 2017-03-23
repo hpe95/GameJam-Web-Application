@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get 'games_controller/index'
   get 'games_controller/deleteKeys'
 
+  resources :game_jams
+ # get 'game_jam/index'
+
+ # get 'game_jam/new'
+
   ## config/routes.rb
 
   devise_for :users, :skip => :registrations

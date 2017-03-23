@@ -1,0 +1,7 @@
+<% @game_jams.each do |g| %>
+	<p>Theme: <%= g.theme %></p>
+	<p>Date: <%= g.date %></p>
+	<p>Version: <%= g.version %></p>
+	<p>Location: <%= g.location %></p>
+<% end %>
+<%= link_to "Add new Game Jam event", new_game_jam_path %>
