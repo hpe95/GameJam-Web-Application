@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'games/index'
+
+  get 'games_controller/index'
+  get 'games_controller/deleteKeys'
+
   ## config/routes.rb
 
   devise_for :users, :skip => :registrations
