@@ -1,34 +1,43 @@
 module LudumDareGame
 	
-	def getTitle(doc)
-		if doc.class == "Nokogiri::HTML::Document"
-			puts "oi"
-			return doc.css('div div p').first
-		end
+	require 'nokogiri'
+	require 'open-uri'
+
+	def getTitle(url)
+		doc = Nokogiri::HTML(open(url))
+		ActionController::Base.helpers.strip_tags((doc.css('div div h2').first).to_html)
 	end
 
-	def getDescription(doc)
-		if doc.class == "Nokogiri::HTML::Document"
-			doc.css('div div h2').each do |link|
-		  	if link.content != "Back to Browse Entries"
-		  		return link.content
-		  	end
-		  	end
-		end
+	def getDescription(url)
+		doc = Nokogiri::HTML(open(url))
+		description = doc.css('body div div div div div div p')
+		retorno = filterDescription(description)
 	end
+
 
 	def getImages(url)
 		hashInfos = url.scrapify
 		hashImages = hashInfos.slice(:images)
-		# Returns only the link of the right images of the game
+		# Returns only the links of the right images of the game
 		arrayImages = filterHash(hashImages)
 
+	end
+
+	private
+	def filterDescription(description)
+		retorno = ""
+		description.each do |link|
+			if link.content != "Back to Browse Entries"
+				retorno = link.content
+				break
+		  	end
+		end
+		retorno
 	end
 
 	def filterHash(hash1)
 		temp = hash1[:images]
 		array = []
-		#puts teste2
 		temp.each do |x|
 			if x.include? "shot"
 				array.push(x)

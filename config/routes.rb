@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'games/index'
-
+  get 'games/show'
   get 'games_controller/index'
   get 'games_controller/deleteKeys'
 
