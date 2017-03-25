@@ -1,9 +1,8 @@
-<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
@@ -28,7 +27,7 @@
 
   <div class="actions">
     <%= f.submit "Sign up" %>
-  </div>
+  </div> -->
 <% end %>
-
+<%= render partial: "gamers/shared/signup"%>
 <%= render "gamers/shared/links" %>
