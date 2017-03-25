@@ -1,0 +1,18 @@
+<h1>Cadastrar Jogo</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@game) do |f| %>
+      <%= f.label "Url do jogo" %>
+      <%= f.url_field :url %>
+
+      <%= f.label "Engine" %>
+      <%= f.text_field :engineName %>
+
+      <%= f.label "Ano" %>
+      <%= f.text_field :year %>
+
+      <%= f.submit "Cadastrar jogo", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

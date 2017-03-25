@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :users, :skip => :registrations
   devise_for :gamers, :developers
   
+  resources :games
   # routes for all users
   authenticated :user do
   end
