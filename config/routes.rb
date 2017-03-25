@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'games/index'
+  get 'games/show'
+  get 'games_controller/index'
+  get 'games_controller/deleteKeys'
+
   ## config/routes.rb
 
   devise_for :users, :skip => :registrations
   devise_for :gamers, :developers
   
+  resources :games
   # routes for all users
   authenticated :user do
   end

@@ -1,0 +1,19 @@
+<div>
+	<div>
+	Nome:	<%= @game.name%>
+	</div>
+	<div>
+	<br>
+	Descricao:	<%= @game.description%>
+	</div>
+	<div>
+	<br>
+	<tbody>
+		<%@images.each do |image|%>
+		<tr>
+			<th><%=image_tag(image)%></th>
+		</tr>
+		<%end%>
+	</tbody>
+	</div>
+</div>
