@@ -1,10 +1,6 @@
 class GamesController < ApplicationController
 	include LudumDareGame
   def index
-    #@game = Game.find(1)
-    #@game.name = getTitle("http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=56711")
-    #@game.description = getDescription("http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=56711")
-    #@game.save!
   end
 
   def new
@@ -25,13 +21,14 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @images = getImages(@game.url)
+
   end
 
 
   private
 
   def game_params
-    params.require(:game).permit(:url, :engineName)
+    params.require(:game).permit(:url, :engineName, :year)
   end
 
 end
