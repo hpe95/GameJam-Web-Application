@@ -11,8 +11,10 @@ class GameJamsController < ApplicationController
 	def create
 		@game_jam = GameJam.create(game_jam_params)
 		if @game_jam.save
+			flash[:success] = "GameJam event was registered!"
 			redirect_to '/game_jams/index'
 		else
+			flash[:danger] = "Please fill all required fields"
 			render :new
 		end
 	end

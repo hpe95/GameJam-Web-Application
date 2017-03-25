@@ -1,9 +1,11 @@
 <h1>Register new Game Jam event</h1>
 
 <%= form_for @game_jam do |f| %>
-	<%= f.text_field :theme, :placeholder => "Theme" %> <br />
+	<%= f.text_field :theme, :placeholder => 'Theme' %> <br />
 	<%= f.date_field :date %> <br />
-	<%= f.text_field :version, :placeholder => "Version" %> <br />
-	<%= f.text_field :location, :placeholder => "Location" %> <br />
-	<%= f.submit "Submit" %>
+	<%= f.text_field :version, :placeholder => 'Version' %> <br />
+	<%= f.label :online, 'Online:' %>
+	<%= f.check_box :online, :id => 'online_confirm'%> <br />
+	<%= f.text_field :location, :placeholder => 'Location', :id => 'location_field' %> <br />
+	<%= f.submit 'Submit' %>
 <% end %>

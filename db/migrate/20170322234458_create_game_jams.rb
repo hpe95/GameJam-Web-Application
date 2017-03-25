@@ -5,6 +5,7 @@ class CreateGameJams < ActiveRecord::Migration
 			t.string :theme
 			t.date :date
 			t.integer :version
+			t.boolean :online
 			t.string :location
       t.timestamps null: false
     end
