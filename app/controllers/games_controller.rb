@@ -9,12 +9,17 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-    @game.name = getTitle(@game.url)
-    @game.description = getDescription(@game.url)
-    if @game.save
-      redirect_to @game
-    else
+    unless @game.url.nil?
+      flash[:danger] = "Please fill all required fields"
       render 'new'
+    else
+      @game.name = getTitle(@game.url)
+      @game.description = getDescription(@game.url)
+      if @game.save
+        redirect_to @game
+      else
+        render 'new'
+      end
     end
   end
 
