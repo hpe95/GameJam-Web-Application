@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   %w(Gamer Developer).each do |k| 
     define_method "current_#{k.underscore}" do 
-        current_account if current_account.is_a?(k.constantize)
+        current_user if current_user.is_a?(k.constantize)
     end 
 
     define_method "authenticate_#{k.underscore}!" do 
