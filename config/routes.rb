@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :comments
   get 'games/index'
   get 'games/show'
+  get 'games/new'
   get 'games_controller/index'
   get 'games_controller/deleteKeys'
 
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   get 'organizations/new'
 
   resources :game_jams
-	
+	resources :games
 	resources :organizations
  # get 'game_jam/index'
 
@@ -18,21 +19,6 @@ Rails.application.routes.draw do
 
   ## config/routes.rb
 
-  devise_for :users, :skip => :registrations
-  devise_for :gamers, :developers
-  
-  resources :games
-  # routes for all users
-  authenticated :user do
-  end
-
-  # routes only for users
-  authenticated :user, lambda {|u| u.type == "Gamer"} do
-  end
-
-  # routes only for companies
-  authenticated :user, lambda {|u| u.type == "Developer"} do
-  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
