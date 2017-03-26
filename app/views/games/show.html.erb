@@ -11,9 +11,10 @@
 	<tbody>
 		<%@images.each do |image|%>
 		<tr>
-			<th><%=image_tag(image)%></th>
+			<th><img src='<%= image %>' style="float: left; width: 30%; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"></th>
 		</tr>
 		<%end%>
+		<p style="clear: both;">
 	</tbody>
 	</div>
 </div>
