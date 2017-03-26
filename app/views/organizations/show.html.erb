@@ -1,0 +1,8 @@
+<% @organizations.each do |o| %>
+	<br /><%= o.name %></p>
+	<p>Site: <%= o.site %></p>
+	<p>Description: <%= o.description %></p>
+	<p>Localization: <%= o.localization %></p>	
+	<%= link_to "Add new Game Jam event for this organization", new_game_jam_path %> <br/>
+<% end %>
+<br /><%= link_to "Add new Game Jam Organization", new_organization_path %>
