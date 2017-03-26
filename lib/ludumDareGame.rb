@@ -24,6 +24,7 @@ module LudumDareGame
 		arrayImages.each do |str|
 			str.gsub!(/png-crop-180-140.jpg/, "png-eq-900-500.jpg")
 		end
+		arrayImages.uniq!
 		arrayImages  
 
 
