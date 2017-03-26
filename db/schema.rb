@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325015415) do
+ActiveRecord::Schema.define(version: 20170326123516) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "field"
+    t.integer  "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "game_id"
+  end
+
+  add_index "comments", ["game_id"], name: "index_comments_on_game_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "game_jams", force: :cascade do |t|
     t.string   "theme"
@@ -21,6 +33,18 @@ ActiveRecord::Schema.define(version: 20170325015415) do
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.string   "engineName"
+    t.string   "url"
+    t.string   "tags"
+    t.integer  "rate"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "organizations", force: :cascade do |t|
