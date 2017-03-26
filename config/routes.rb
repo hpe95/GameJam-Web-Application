@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'games/index'
   get 'games/show'
   get 'games_controller/index'
