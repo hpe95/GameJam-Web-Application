@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 	include LudumDareGame
   def index
+    @games = Game.paginate(page: params[:page])
   end
 
   def new
