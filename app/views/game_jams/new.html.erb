@@ -1,0 +1,13 @@
+
+<%= form_for @game_jam do |f| %>
+<!-- 
+	<%= f.text_field :theme, :placeholder => 'Theme' %> <br />
+	<%= f.date_field :date %> <br />
+	<%= f.text_field :version, :placeholder => 'Version' %> <br />
+	<%= f.label :online, 'Online:' %>
+	<%= f.check_box :online, :id => 'online_confirm'%> <br />
+	<%= f.text_field :location, :placeholder => 'Location', :id => 'location_field' %> <br />
+	<%= f.submit 'Submit' %>
+ -->	
+ <%=render partial: "game_jams/shared/gamejam_registration"%>
+<% end %>

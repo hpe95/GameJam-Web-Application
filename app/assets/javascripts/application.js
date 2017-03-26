@@ -15,3 +15,14 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('click', function() {
+
+   if ($('#online_confirm').is(':checked')) {
+      $('#location_field').hide();
+   }
+   else {
+      $('#location_field').show();
+   }
+}
+);
