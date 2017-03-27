@@ -13,6 +13,11 @@ class OrganizationsController < ApplicationController
 		@organization = Organization.new
   end
 
+  def show_jams
+  	#@game_jams = @current_organization.game_jams.all
+  	@game_jams = GameJam.where(organization_id: 1)
+  end
+
 	def create
 		@organization = Organization.create(organization_params)
 		if @organization.save
