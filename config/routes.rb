@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'games_controller/index'
   get 'games_controller/deleteKeys'
   get 'organizations/show_jams'
+  get 'organizations/show_games'
   #get 'organizations/show'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'

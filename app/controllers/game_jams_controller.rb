@@ -1,7 +1,12 @@
 class GameJamsController < ApplicationController
-	def show
+	def index
 		@game_jams = GameJam.all
-		render :index
+		destroy_session_gamejam		
+	end
+
+	def show
+		@gamejam = GameJam.find(params[:id])
+		set_session_gamejam(@gamejam)
 	end
 
   def new

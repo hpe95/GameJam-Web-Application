@@ -24,6 +24,22 @@ module SessionsHelper
 		org == current_organization
 	end
 
+	def current_gamejam
+		@current_gamejam ||= GameJam.find_by(id: session[:game_jam_id])
+	end
+
+	def set_session_gamejam(gamejam)
+		session[:game_jam_id] = gamejam.id 
+	end
+
+	def destroy_session_gamejam
+		session.delete(:game_jam_id)
+		@current_gamejam = nil
+	end
+	def current_gamejam?(gamejam)
+		gamejam == current_gamejam
+	end
+
 	def logged_in?
 	    !current_user.nil?
 	end

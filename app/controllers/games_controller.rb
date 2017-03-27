@@ -7,8 +7,15 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def show_games
+    current_gamejam
+    #@game_jams = @current_organization.game_jams.all
+    @game = Game.where(game_jam_id: @current_gamejam)
+  end
+
   def create
-    @game = Game.new(game_params)
+    current_gamejam
+    @game = @current_gamejam.games.new(game_params)
     if !@game.url.blank?
       @game.name = getTitle(@game.url)
       @game.description = getDescription(@game.url)

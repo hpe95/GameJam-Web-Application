@@ -4,4 +4,5 @@ class Game < ActiveRecord::Base
 	validates :year, numericality: {only_integer: true}
 
 	has_many :comments
+	belongs_to :game_jam
 end
