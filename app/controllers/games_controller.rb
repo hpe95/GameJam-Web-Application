@@ -29,6 +29,18 @@ class GamesController < ApplicationController
     @images = getImages(@game.url)
   end
 
+  def upvote
+    @game = Game.find(params[:id])
+    @game.liked_by current_user
+    redirect_to @game
+  end
+
+  def downvote
+    @game = Game.find(params[:id])
+    @game.downvote_from current_user
+    redirect_to @game
+  end
+
 
   private
 
