@@ -26,5 +26,15 @@
 	</div>
 </div>
 
-	<br /><br />
+	<% (1..20).each do |b| %>
+		<br />
+	<% end %>
+	<center>
 		<%= link_to 'New comment', :controller => :comments, :action => :new, :id => @game.id, class: 'btn btn-primary m-t-10' %>
+
+		<% @game.comments.each do |comment| %>
+			<br />
+			<b> Rate: </b> <%= comment.rate %><br />
+			<%= comment.field %>
+		<% end %>
+	</center>

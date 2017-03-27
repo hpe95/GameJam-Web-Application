@@ -36,6 +36,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @images = getImages(@game.url)
+	@comments = Comment.all.where(:game_id => @game.id)
   end
 
   def upvote
