@@ -18,12 +18,10 @@ ActiveRecord::Schema.define(version: 20170327120411) do
     t.integer  "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
     t.integer  "game_id"
   end
 
   add_index "comments", ["game_id"], name: "index_comments_on_game_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "game_jams", force: :cascade do |t|
     t.string   "theme"
