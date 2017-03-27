@@ -1,0 +1,13 @@
+<div class="row">
+  <aside class="col-md-4">
+<h1><%= @gamejam.theme%></h1>
+
+<p>Date: <%= @gamejam.date%></p>
+<p>Description: <%= @gamejam.version%></p>
+<p>Online: <%= @gamejam.online%></p>
+<p>Location: <%= @gamejam.location%></p>
+<%= link_to "Add new Game for this gamejam", new_game_path %>
+<%= link_to "View all Games for this gamejam", '/game_jams/show_games' %>
+
+	</aside>
+</div>

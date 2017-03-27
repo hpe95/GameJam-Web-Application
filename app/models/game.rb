@@ -6,4 +6,5 @@ class Game < ActiveRecord::Base
 	acts_as_votable
 
 	has_many :comments
+	belongs_to :game_jam
 end

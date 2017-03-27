@@ -2,8 +2,9 @@
   <!-- the reason for the tabindex is to support webkit //-->
   <div class="css-slider-mask">
     <!-- there are a number of add on modules which are demo-able by the javascript checkboxes added to this example page //-->
+
     <ul class="css-slider with-responsive-images with-selection-disabled with-reflection with-fade-in">
-      <% Game.all().each_with_index do |game, index| %>
+      <% Game.all.each_with_index do |game, index| %>
         <li class="slide" tabindex="1" id="l1">
           <span class="slide-outer">
             <span class="slide-inner">
