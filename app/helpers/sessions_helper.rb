@@ -12,10 +12,14 @@ module SessionsHelper
 		@current_organization ||= Organization.find_by(id: session[:organization_id])
 	end
 
-	def getSessionOrganization(org)
+	def set_session_organization(org)
 		session[:organization_id] = org.id 
 	end
 
+	def destroy_session_organization
+		session.delete(:organization_id)
+		@current_organization = nil
+	end
 	def current_organization?(org)
 		org == current_organization
 	end

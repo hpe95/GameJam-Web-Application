@@ -1,6 +1,12 @@
 class OrganizationsController < ApplicationController
+  def index
+  	@organizations = Organization.all
+  	destroy_session_organization
+  end
+
   def show
-		@organizations = Organization.all
+	@organization = Organization.find(params[:id])
+	set_session_organization(@organization)
   end
 
   def new
@@ -10,7 +16,6 @@ class OrganizationsController < ApplicationController
 	def create
 		@organization = Organization.create(organization_params)
 		if @organization.save
-			getSessionOrganization(@organization)
 			flash[:success] = "Organization created!"
 			redirect_to '/organizations/show'
 		else

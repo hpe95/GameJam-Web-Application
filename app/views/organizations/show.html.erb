@@ -1,11 +1,10 @@
-<% @organizations.each do |o| %>
-	<br /><%= o.name %></p>
-	<p>Site: <%= o.site %></p>
-	<p>Description: <%= o.description %></p>
-	<p>Localization: <%= o.localization %></p>	
-	<%= link_to "Add new Game Jam event for this organization", new_game_jam_path %> <br/>
-	<%if current_organization?(o)%>
-		<h1><%=o.name%></h1>
-	<%end%>
-<% end %>
-<br /><%= link_to "Add new Game Jam Organization", new_organization_path %>
+<div class="row">
+  <aside class="col-md-4">
+<h1><%= @organization.name%></h1>
+
+<p>Site: <%= @organization.site%></p>
+<p>Description: <%= @organization.description%></p>
+<p>Location: <%= @organization.localization%></p>
+<%= link_to "Add new Game Jam event for this organization", new_game_jam_path %>
+	</aside>
+</div>
