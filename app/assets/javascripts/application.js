@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap/dropdown
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -26,3 +28,7 @@ $(document).on('click', function() {
    }
 }
 );
+
+ $(document).ready(function(){
+       $('.dropdown-toggle').dropdown();
+   });

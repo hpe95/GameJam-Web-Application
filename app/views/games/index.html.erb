@@ -1,14 +1,16 @@
+
   <!-- the reason for the tabindex is to support webkit //-->
   <div class="css-slider-mask">
     <!-- there are a number of add on modules which are demo-able by the javascript checkboxes added to this example page //-->
     <ul class="css-slider with-responsive-images with-selection-disabled with-reflection with-fade-in">
-      <% Game.all().each do |game| %>
+      <% Game.all().each_with_index do |game, index| %>
         <li class="slide" tabindex="1" id="l1">
           <span class="slide-outer">
             <span class="slide-inner">
               <!-- each slide-gfx needs a unique id if you wish to use reflections, you will also need to update .with-reflection in core.css //-->
-              <span class="slide-gfx" id="s1">
-                <%= image_tag(getImages(game.url)[0]) %>
+
+              <% '<span class="slide-gfx" id="s'+index.to_s+'">' %>
+                <%= link_to(image_tag(getImages(game.url)[0]), games_path+'/'+game.id.to_s) %>
               </span>
             </span>
           </span>
