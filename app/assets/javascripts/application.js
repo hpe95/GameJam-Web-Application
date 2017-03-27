@@ -11,6 +11,39 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap/dropdown
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('click', function() {
+
+   if ($('#online_confirm').is(':checked')) {
+      $('#location_field').hide();
+   }
+   else {
+      $('#location_field').show();
+   }
+}
+);
+
+ $(document).ready(function(){
+       $('.dropdown-toggle').dropdown();
+   });
+
+var score = document.getElementById("scoreCounter");
+score.innerHTML = "0";
+var scoreValue = 0;
+checkScore();
+
+function checkScore() {
+  if (scoreValue < 0) {
+    score.style.color = "#FF586C";
+  } else if (scoreValue > 0) {
+    score.style.color = "#6CC576";
+  } else {
+    score.style.color = "#666666";
+  }
+}

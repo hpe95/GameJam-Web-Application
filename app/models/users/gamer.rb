@@ -1,2 +1,0 @@
-class Gamer < User
-end

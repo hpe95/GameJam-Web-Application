@@ -1,0 +1,27 @@
+<% if logged_in? %>
+
+  <h1>Register Game</h1>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@game) do |f| %>
+        <%#render 'shared/error_messages'%>
+        <%= f.label "Url" %>
+        <%= f.url_field :url %>
+
+        <%= f.label "Engine" %>
+        <%= f.text_field :engineName %>
+
+        <%= f.label "Year" %>
+        <%= f.text_field :year %>
+
+        <%= f.select :game_jam_id , options_for_select(@game_jams), required: true%>
+
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  You must <%= link_to("log in", login_path) %> first!
+<% end %>
+

@@ -1,34 +1,60 @@
 class GamesController < ApplicationController
 	include LudumDareGame
   def index
-  	#puts 'Wow! What an awesome site: http://globalgamejam.org/2017/games/moon-bell'.scrapify
-  	doc = Nokogiri::HTML(open('http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=56711'))
-  	#teste = getTitle(doc)
-  	puts doc.css('div div p').first
-  	#puts "### Search for nodes by css"
-  	#puts doc.css('body div div div div div div div div p').first
-	#teste = "http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=50733".scrapify
-	#teste1 = teste.slice(:images)
-	#puts teste1
-	#deleteKeys(teste1)
-  	#doc.css('div a').each do |link|
-  	#  puts link.content
-  	#end
   end
 
-  #def getTitle(doc)
- # 	return doc.css('div div p').first
- # end
+  def new
+    @game = Game.new
 
-  def filterHash(hash1)
-  	teste2 = hash1[:images]
-  	array = []
-  	#puts teste2
-  	teste2.each do |x|
-  		if x.include? "shot"
-  			array.push(x)
-  		end
-  	end
-  	puts array
+    @game_jams = GameJam.all.map { |f| ['Ludum dare ' + f.version.to_s, f.id] }
   end
+
+  def show_games
+    current_gamejam
+    #@game_jams = @current_organization.game_jams.all
+    @games = Game.where(game_jam_id: @current_gamejam)
+  end
+
+  def create
+    current_gamejam
+    @game = @current_gamejam.games.new(game_params)
+    if !@game.url.blank?
+      @game.name = getTitle(@game.url)
+      @game.description = getDescription(@game.url)
+      if @game.save
+        redirect_to @game
+      else
+        flash[:danger] = "Please fill all required fields"
+        render 'new'
+      end
+    else
+      flash[:danger] = "Please fill URL field"
+      render 'new'
+    end
+  end
+
+  def show
+    @game = Game.find(params[:id])
+    @images = getImages(@game.url)
+  end
+
+  def upvote
+    @game = Game.find(params[:id])
+    @game.liked_by current_user
+    redirect_to @game
+  end
+
+  def downvote
+    @game = Game.find(params[:id])
+    @game.downvote_from current_user
+    redirect_to @game
+  end
+
+
+  private
+
+  def game_params
+    params.require(:game).permit(:url, :engineName, :year)
+  end
+
 end

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1>Game Jams </h1>
+            </div>
+
+            <div class="comments-list">
+				<% @game_jams.each do |g| %>
+
+					<div class="media">
+				        <p class="pull-right"><small>Date: <%= g.date %></small></p>
+				        <!-- <a class="media-left" href="#">
+                              <img src="http://lorempixel.com/40/40/people/1/">
+                            </a> -->
+				            <div class="media-body">
+				            	<h4 class="media-heading user_name">Theme: <%= g.theme %></h4>
+				                Version: <%= g.version %>
+				                <p><small>Location: <%= g.location %></small></p>
+				            </div>
+				    </div>
+				    <%= link_to "Select this Game Jam", game_jam_path(g) %> <br/>
+					<!-- <p>Theme: <%= g.theme %></p>
+					<p>Date: <%= g.date %></p>
+					<p>Version: <%= g.version %></p>
+					<p>Location: <%= g.location %></p> -->
+				<% end %>
+			 </div>
+                    
+                    
+                    
+        </div>
+    </div>
+</div>

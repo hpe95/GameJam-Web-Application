@@ -1,30 +1,47 @@
 Rails.application.routes.draw do
-  get 'games/index'
+  get 'sessions/new'
 
+  get 'users/new'
+
+  resources :comments
+  get 'games/index'
+  get 'games/show'
+  get 'games/new'
   get 'games_controller/index'
   get 'games_controller/deleteKeys'
+  get 'organizations/show_jams'
+  get 'games/show_games'
+  #get 'organizations/show'
+  get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
+
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
+  get 'organizations/index'
+  get 'organizations/new'
+  resources :users
+  resources :game_jams
+	resources :games do
+    member do
+      put "like", to: "games#upvote"
+      put "dislike", to: "games#downvote"
+    end  
+  end
+	resources :organizations
+
+ # get 'game_jam/index'
+
+ # get 'game_jam/new'
 
   ## config/routes.rb
-
-  devise_for :users, :skip => :registrations
-  devise_for :gamers, :developers
   
-  # routes for all users
-  authenticated :user do
-  end
-
-  # routes only for users
-  authenticated :user, lambda {|u| u.type == "Gamer"} do
-  end
-
-  # routes only for companies
-  authenticated :user, lambda {|u| u.type == "Developer"} do
-  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'games#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

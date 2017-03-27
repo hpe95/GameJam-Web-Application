@@ -1,0 +1,30 @@
+<div>
+	<center>
+		<%= @game.get_upvotes.size-@game.get_downvotes.size %>
+		<br>
+		<%= link_to "Upvote", like_game_path(@game), method: :put, :onclick => 'upVote()'%>
+		<%= link_to "Downvote", dislike_game_path(@game), method: :put %>
+	</center>	
+	Nome:	<%= @game.name%>
+	</div>
+	<div>
+	<br>
+	Descricao:	<%= simple_format @game.description%>
+	</div>
+	<div>
+	<br>
+	<tbody>
+		<%@images.each do |image|%>
+		<tr>
+			<th><img src='<%= image %>' style="float: left; width: 30%; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"></th>
+
+		</tr>
+		<%end%>
+
+		<br /><br />
+	</tbody>
+	</div>
+</div>
+
+	<br /><br />
+		<%= link_to 'New comment', :controller => :comments, :action => :new, :id => @game.id, class: 'btn btn-primary m-t-10' %>
