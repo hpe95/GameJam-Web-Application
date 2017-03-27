@@ -14,8 +14,9 @@ class OrganizationsController < ApplicationController
   end
 
   def show_jams
+  	current_organization
   	#@game_jams = @current_organization.game_jams.all
-  	@game_jams = GameJam.where(organization_id: 1)
+  	@game_jams = GameJam.where(organization_id: @current_organization)
   end
 
 	def create
