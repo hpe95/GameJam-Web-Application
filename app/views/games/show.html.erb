@@ -12,9 +12,14 @@
 		<%@images.each do |image|%>
 		<tr>
 			<th><img src='<%= image %>' style="float: left; width: 30%; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"></th>
+
 		</tr>
 		<%end%>
-		<p style="clear: both;">
+
+		<br /><br />
 	</tbody>
 	</div>
 </div>
+
+	<br /><br />
+		<%= link_to 'New comment', :controller => :comments, :action => :new, :id => @game.id, class: 'btn btn-primary m-t-10' %>

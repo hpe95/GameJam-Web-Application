@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+	@game = Game.find(params[:id])
+	@comment = @game.comments.build
   end
 
   # GET /comments/1/edit
