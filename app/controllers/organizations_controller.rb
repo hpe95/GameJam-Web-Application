@@ -1,6 +1,12 @@
 class OrganizationsController < ApplicationController
+  def index
+  	@organizations = Organization.all
+  	destroy_session_organization
+  end
+
   def show
-		@organizations = Organization.all
+	@organization = Organization.find(params[:id])
+	set_session_organization(@organization)
   end
 
   def new
@@ -11,7 +17,7 @@ class OrganizationsController < ApplicationController
 		@organization = Organization.create(organization_params)
 		if @organization.save
 			flash[:success] = "Organization created!"
-			redirect_to '/organizations/show'
+			redirect_to @organization
 		else
 			flash[:danger] = "Please fill all required fields"
 			render :new

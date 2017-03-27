@@ -9,7 +9,8 @@ class GameJamsController < ApplicationController
   end
 
 	def create
-		@game_jam = GameJam.create(game_jam_params)
+		current_organization
+		@game_jam = @current_organization.game_jams.create(game_jam_params)
 		if @game_jam.save
 			flash[:success] = "GameJam event was registered!"
 			redirect_to '/game_jams/index'
