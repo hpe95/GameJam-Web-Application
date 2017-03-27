@@ -23,8 +23,14 @@ Rails.application.routes.draw do
   get 'organizations/new'
   resources :users
   resources :game_jams
-	resources :games
+	resources :games do
+    member do
+      put "like", to: "games#upvote"
+      put "dislike", to: "games#downvote"
+    end  
+  end
 	resources :organizations
+
  # get 'game_jam/index'
 
  # get 'game_jam/new'

@@ -1,5 +1,10 @@
 <div>
-	<div>
+	<center>
+		<%= @game.get_upvotes.size-@game.get_downvotes.size %>
+		<br>
+		<%= link_to "Upvote", like_game_path(@game), method: :put, :onclick => 'upVote()'%>
+		<%= link_to "Downvote", dislike_game_path(@game), method: :put %>
+	</center>	
 	Nome:	<%= @game.name%>
 	</div>
 	<div>

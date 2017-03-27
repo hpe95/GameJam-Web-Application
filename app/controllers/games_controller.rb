@@ -5,6 +5,8 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+
+    @game_jams = GameJam.all.map { |f| ['Ludum dare ' + f.version.to_s, f.id] }
   end
 
   def show_games
@@ -34,6 +36,18 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @images = getImages(@game.url)
+  end
+
+  def upvote
+    @game = Game.find(params[:id])
+    @game.liked_by current_user
+    redirect_to @game
+  end
+
+  def downvote
+    @game = Game.find(params[:id])
+    @game.downvote_from current_user
+    redirect_to @game
   end
 
 

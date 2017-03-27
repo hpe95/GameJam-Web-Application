@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
 	validates :engineName, presence: true
 	validates :year, numericality: {only_integer: true}
 
+	acts_as_votable
+
 	has_many :comments
 	belongs_to :game_jam
 end

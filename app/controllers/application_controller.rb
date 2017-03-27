@@ -17,5 +17,5 @@ class ApplicationController < ActionController::Base
   end
   
 
-  helper_method :getImages
+  helper_method :getImages, :upvote, :downvote
 end
