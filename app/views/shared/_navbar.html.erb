@@ -17,7 +17,7 @@
         <% if logged_in? %>
           <li><%= link_to "Games", games_index_path %></li>
               <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", '#' %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li>
                 <%= link_to "Log out", logout_path, method: "delete" %>
               </li>
