@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326222238) do
+ActiveRecord::Schema.define(version: 20170327004019) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "field"
@@ -29,9 +29,12 @@ ActiveRecord::Schema.define(version: 20170326222238) do
     t.integer  "version"
     t.boolean  "online"
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "organization_id"
   end
+
+  add_index "game_jams", ["organization_id"], name: "index_game_jams_on_organization_id"
 
   create_table "games", force: :cascade do |t|
     t.string   "name"

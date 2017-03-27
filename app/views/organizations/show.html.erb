@@ -4,5 +4,8 @@
 	<p>Description: <%= o.description %></p>
 	<p>Localization: <%= o.localization %></p>	
 	<%= link_to "Add new Game Jam event for this organization", new_game_jam_path %> <br/>
+	<%if current_organization?(o)%>
+		<h1><%=o.name%></h1>
+	<%end%>
 <% end %>
 <br /><%= link_to "Add new Game Jam Organization", new_organization_path %>

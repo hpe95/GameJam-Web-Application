@@ -1,53 +1,33 @@
-
-<%= form_for @game_jam do |f| %>
-<!-- 
-	<%= f.text_field :theme, :placeholder => 'Theme' %> <br />
-	<%= f.date_field :date %> <br />
-	<%= f.text_field :version, :placeholder => 'Version' %> <br />
-	<%= f.label :online, 'Online:' %>
-	<%= f.check_box :online, :id => 'online_confirm'%> <br />
-	<%= f.text_field :location, :placeholder => 'Location', :id => 'location_field' %> <br />
-	<%= f.submit 'Submit' %>
- -->	
- <div class="container" >
+<div class="container" >
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary" style="border-color: gray">
                 <div class="panel-heading" style="background-color:#f5f5f5;color: black">Game Jam</div>
                 <div class="panel-body">
-                    <form role="form" method="post" action="" accept-charset="UTF-8">
-                    
-                        <label for="fname">Game Jam Theme</label>
-                        <!-- <input type="text" id="fname" class="form-control" name="fname" placeholder=""> --> <%= f.text_field :theme, :placeholder => 'Theme',class:"form-control"%></br>
+                    <%= form_for(@game_jam) do |f| %>
+                          <%= f.label :theme %>
+                          <%= f.text_field :theme, class: 'form-control'%>
 
-                        <label for="fname">Date</label>
-                        <!-- <input type="date" id="date" class="form-control" name="date" placeholder="21/21/2021"> --><%= f.date_field :date,class:"form-control" %></br>
-                        
-                        <label for="lname">Version</label>
-                        <!-- <input type="text" id="lname" class="form-control" name="lname"> -->
-                        <%= f.text_field :version, :placeholder => 'Version',class:"form-control"  %></br>
-                        <label> 
-                            <!-- <input type="checkbox"  id="online_confirm"><strong> Online</strong> -->
-                            <%= f.check_box :online, :id => 'online_confirm'%><strong> Online</strong> <br />
-                        </label></br>
-                        
-                        <!-- <input type="text" id="location_field" class="form-control" placeholder="Location" style="margin-bottom: 12px"> -->
+                          <%= f.label :date %>
+                          <%= f.text_field :date, class: 'form-control' %>
 
-                            <%= f.text_field :location, :placeholder => 'Location', :id => 'location_field',class:"form-control" %>
-                        
-                        <center> <!-- <input type="submit" class="btn btn-primary m-t-10" id="submitbtn" name="submit" value="Create"> -->  <%= f.submit 'Submit',class:"btn btn-primary m-t-10" %>
-</center>
-<% end %>
+                          <%= f.label :version %>
+                          <%= f.text_field :version, class: 'form-control' %>
 
-</form>
+                          <%= f.label :online %>
+                          <%= f.check_box :online, class: 'form-control'%>
+
+                          <%= f.label :location %>
+                          <%= f.password_field :location, class: 'form-control' %>
+
+                          <%#= f.label :password_confirmation, "Confirmation" %>
+                          <%#= f.password_field :password_confirmation, class: 'form-control' %>
+
+                          <%= f.submit "Register game jam", class: "btn btn-primary" %>
+                        <% end %>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-
-</fieldset>
-</form>
-  
-  </div>
-</div>
 </div>
