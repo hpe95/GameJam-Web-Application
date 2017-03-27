@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   def show_games
     current_gamejam
     #@game_jams = @current_organization.game_jams.all
-    @game = Game.where(game_jam_id: @current_gamejam)
+    @games = Game.where(game_jam_id: @current_gamejam)
   end
 
   def create
