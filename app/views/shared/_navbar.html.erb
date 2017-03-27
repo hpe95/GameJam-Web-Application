@@ -8,14 +8,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <%= link_to(image_tag("https://pbs.twimg.com/profile_images/1850266383/icon.png", size: "50x50"), root_path) %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav navbar-right">
+        <li id="fat-menu" class="dropdown">
+          <a href="#" class="dropdown-toggle" data toggle="dropdown">
+              Games <b class="caret"></b>
+          </a>
+      <ul class="dropdown-menu">
+              <li><%= link_to "List", games_index_path %></li>
+              <% if logged_in? %>
+                <li class="divider"></li>
+                <li><%= link_to "Add", games_new_path %></li>
+              <% end %>
+          </ul>
+      </li>
         <li><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "Games", games_index_path %></li>
+          
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li>

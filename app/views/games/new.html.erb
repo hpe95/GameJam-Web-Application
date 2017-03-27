@@ -1,19 +1,25 @@
-<h1>Register Game</h1>
+<% if logged_in? %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@game) do |f| %>
-      <%#render 'shared/error_messages'%>
-      <%= f.label "Url" %>
-      <%= f.url_field :url %>
+  <h1>Register Game</h1>
 
-      <%= f.label "Engine" %>
-      <%= f.text_field :engineName %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@game) do |f| %>
+        <%#render 'shared/error_messages'%>
+        <%= f.label "Url" %>
+        <%= f.url_field :url %>
 
-      <%= f.label "Year" %>
-      <%= f.text_field :year %>
+        <%= f.label "Engine" %>
+        <%= f.text_field :engineName %>
 
-      <%= f.submit "Submit", class: "btn btn-primary" %>
-    <% end %>
+        <%= f.label "Year" %>
+        <%= f.text_field :year %>
+
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  You must <%= link_to("log in", login_path) %> first!
+<% end %>
+
