@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'games/new'
   get 'games_controller/index'
   get 'games_controller/deleteKeys'
-
+  get 'organizations/show_jams'
+  get 'games/show_games'
   #get 'organizations/show'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
@@ -18,12 +19,18 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-
+  get 'organizations/index'
   get 'organizations/new'
   resources :users
   resources :game_jams
-	resources :games
+	resources :games do
+    member do
+      put "like", to: "games#upvote"
+      put "dislike", to: "games#downvote"
+    end  
+  end
 	resources :organizations
+
  # get 'game_jam/index'
 
  # get 'game_jam/new'

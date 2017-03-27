@@ -5,10 +5,19 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+
+    @game_jams = GameJam.all.map { |f| ['Ludum dare ' + f.version.to_s, f.id] }
+  end
+
+  def show_games
+    current_gamejam
+    #@game_jams = @current_organization.game_jams.all
+    @games = Game.where(game_jam_id: @current_gamejam)
   end
 
   def create
-    @game = Game.new(game_params)
+    current_gamejam
+    @game = @current_gamejam.games.new(game_params)
     if !@game.url.blank?
       @game.name = getTitle(@game.url)
       @game.description = getDescription(@game.url)
@@ -27,6 +36,18 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @images = getImages(@game.url)
+  end
+
+  def upvote
+    @game = Game.find(params[:id])
+    @game.liked_by current_user
+    redirect_to @game
+  end
+
+  def downvote
+    @game = Game.find(params[:id])
+    @game.downvote_from current_user
+    redirect_to @game
   end
 
 

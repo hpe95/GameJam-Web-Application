@@ -1,7 +1,12 @@
 class GameJamsController < ApplicationController
-	def show
+	def index
 		@game_jams = GameJam.all
-		render :index
+		destroy_session_gamejam		
+	end
+
+	def show
+		@gamejam = GameJam.find(params[:id])
+		set_session_gamejam(@gamejam)
 	end
 
   def new
@@ -13,7 +18,7 @@ class GameJamsController < ApplicationController
 		@game_jam = @current_organization.game_jams.create(game_jam_params)
 		if @game_jam.save
 			flash[:success] = "GameJam event was registered!"
-			redirect_to '/game_jams/index'
+			redirect_to @game_jam
 		else
 			flash[:danger] = "Please fill all required fields"
 			render :new
